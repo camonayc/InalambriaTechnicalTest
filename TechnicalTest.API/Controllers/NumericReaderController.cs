@@ -47,7 +47,6 @@ namespace TechnicalTest.API.Controllers
         [HttpPost(Name = "GetNumberConvertToText")]
         [ProducesResponseType(type: typeof(ApiResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(type: typeof(ApiResponse), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(type: typeof(ApiResponse), StatusCodes.Status422UnprocessableEntity)]
         [ProducesResponseType(type: typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> ConvertNumberToText([FromBody] NumericReaderCommand number)
         {
@@ -61,9 +60,9 @@ namespace TechnicalTest.API.Controllers
             {
                 return BadRequest(ErrorRequest(400,ex.Message));
             }
-            catch (TypeException ex)
+            catch (EmptyException ex)
             {
-                return BadRequest(ErrorRequest(422, ex.Message));
+                return BadRequest(ErrorRequest(400, ex.Message));
             }
             catch (Exception ex)
             {
