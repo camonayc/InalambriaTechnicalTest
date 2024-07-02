@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TechnicalTest.API</name>
+    </assembly>
+    <members>
+        <member name="M:TechnicalTest.API.Controllers.NumericReaderController.ConvertNumberToText(TechnicalTest.API.Commands.NumericReader.NumericReaderCommand)">
+            <summary>
+            Convierte un número entero a su equivalente en texto.
+            </summary>
+            <remarks>
+            <para>Este método recibe un número entero y lo convierte a su representación textual.</para>
+            <para>El número debe ser un entero sin comas ni puntos. Ejemplo de entrada válida: <code>1234567890</code></para>
+            <para>Ejemplo de respuesta:</para>
+            <pre>
+            {
+              "statusCode": 200,
+              "isSuccess": true,
+              "message": "Conversión exitosa",
+              "data": "mil millones doscientos treinta y cuatro millones quinientos sesenta y siete mil ochocientos noventa"
+            }
+            </pre>
+            </remarks>
+            <param name="number">Objeto que contiene el número a convertir.</param>
+            <returns>Retorna una respuesta con el número convertido a texto.</returns>
+            <response code="200">Conversión exitosa.</response>
+            <response code="400">Error en la solicitud. El número no es válido. El número es obligatorio.</response>
+            <response code="422">El servidor comprende la solicitud, pero no puede procesarla debido a errores de sintaxis o semánticos.</response>
+            <response code="500">Se produjo una excepción en el sistema que no se pudo manejar.</response>
+        </member>
+        <member name="M:TechnicalTest.API.Controllers.TokenController.Post(TechnicalTest.API.Commands.CreateToken.CreateTokenCommand)">
+            <summary>
+            Crea un JWT para autenticación.
+            </summary>
+            <remarks>
+            <para>Este método recibe los datos del usuario (Nombre y Email) y genera un token de autorización.</para>
+            <para>Los campos Name y Email no pueden ser nulos ni vacíos</para>
+            <para>Ejemplo de respuesta:</para>
+            <pre>
+            {
+              "statusCode": 200,
+              "isSuccess": true,
+              "message": "Conversión exitosa",
+              "data": "JWT generado"
+            }
+            </pre>
+            </remarks>
+            <param name="userData">Objeto que contiene el nombre y email del usuario, para generar el token.</param>
+            <returns>Retorna una respuesta con el token generado.</returns>
+            <response code="200">Conversión exitosa.</response>
+            <response code="400">Error en la solicitud. Los campo Name y Email son obligatorios. Los campos Name y Emial no pueden ser vacíos.</response>
+            <response code="500">Se produjo una excepción en el sistema que no se pudo manejar.</response>
+        </member>
+    </members>
+</doc>
